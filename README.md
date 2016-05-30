@@ -24,14 +24,12 @@ The SDK is now part of your application and ready to be used.
 The easiest integration to the SDK comes from extending the MNApplication class and registering it in your Manifest file as your application class.  This will automatically take care of starting the SDK when the app starts.
 
 ```
-#!java
 public class MainApplication extends MNApplication {
 }
 ```
 
 In your application manifest:
 ```
-#!xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mobiquitynetworks.com.mobiquitynetworkssampleapp">
@@ -53,8 +51,6 @@ In your application manifest:
 If for some reason you're unable to extend the MNApplication class (for example you're already extending MultidexApplication), you can add the following to the **Application** onCreate method:
 
 ```
-#!java
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -69,7 +65,6 @@ If for some reason you're unable to extend the MNApplication class (for example 
 If your application is targeting Android API 23 or higher you must request some permissions at runtime.  To enable beacon scanning we need the permission ACCESS_FINE_LOCATION:
 
 ```
-#!java
 // You must implement the ActivityCompat.OnRequestPermissionsResultCallback
 public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
 
@@ -125,7 +120,6 @@ While previously you would use the ProximityManager to interact with the SDK, it
 You can add demographic information that is used for ad filtering purposes:
 
 ```
-#!java
         Demographics demographics = new Demographics();
         demographics.setEducation(Demographics.Education.COLLEGE);
         demographics.setEthnicity(Demographics.Ethnicity.CAUSASIAN);
@@ -137,7 +131,6 @@ You can add demographic information that is used for ad filtering purposes:
 You can also retrieve the demographics currently set to update them:
 
 ```
-#!java
         Demographics demographics = MNManager.getInstance(getApplicationContext()).getDemographics();
 ```
 
@@ -146,7 +139,6 @@ You can also retrieve the demographics currently set to update them:
 You can add custom vars:
 
 ```
-#!java
         Map<String, String> customVars = new HashMap<String, String>();
         customVars.put("custom1", "foo");
         customVars.put("custom2", "bar");
@@ -156,7 +148,6 @@ You can add custom vars:
 You can also retrieve the custom vars currently set to update them:
 
 ```
-#!java
         Map<String, String> customVars = MNManager.getInstance(getApplicationContext()).getCustomVarsMap();
 ```
 
@@ -165,7 +156,6 @@ You can also retrieve the custom vars currently set to update them:
 You can add custom tags:
 
 ```
-#!java
         List<String> tags = new ArrayList<String>();
         tags.add("horror");
         tags.add("comedy");
@@ -176,7 +166,6 @@ You can add custom tags:
 You can also retrieve your custom tags to update them:
 
 ```
-#!java
         List<String> tags = MNManager.getInstance(getApplicationContext()).getTags();
 ```
 
@@ -187,7 +176,6 @@ If you want to be able to open you app by clicking a notification, you need to r
 Register the deeplink scheme in your Manifest:
 
 ```
-#!xml
         <activity
             android:name=".DeepLinkActivity"
             android:label="@string/title_activity_deep_link"
@@ -208,7 +196,6 @@ Register the deeplink scheme in your Manifest:
 Create the associated Activity:
 
 ```
-#!java
 public class DeepLinkActivity extends Activity {
 
     @Override
@@ -250,8 +237,6 @@ public class DeepLinkActivity extends Activity {
 The SDK will send a broadcast whenever the Bluetooth is turned off.  This is an optional broadcast your app can receive if it wishes to be notified by the SDK when the Bluetooth is turned off and thus the SDK will not function.  Below you will find a sample implementation that will ask the user to enable Bluetooth while specifying which app is requesting it and why.
 
 ```
-#!java
-
 public class BluetoothReceiver extends BroadcastReceiver {
     public final static int DISMISS = 0;
     public final static int ENABLE = 1;
@@ -319,8 +304,6 @@ public class BluetoothReceiver extends BroadcastReceiver {
 The broadcast receivers must also be defined in the manifest:
 
 ```
-#!xml
-
         <receiver
             android:name=".BluetoothReceiver"
             android:exported="false">
@@ -339,8 +322,6 @@ The SDK will send a broadcast message whenever a GooglePlayServicesRepairableExc
 
 
 ```
-#!java
-
 public class GooglePlayServicesReceiver extends BroadcastReceiver {
 
     @Override
@@ -365,8 +346,6 @@ public class GooglePlayServicesReceiver extends BroadcastReceiver {
 Always register the receiver in the manifest:
 
 ```
-#!xml
-
         <receiver
             android:name=".GooglePlayServicesReceiver"
             android:exported="false">
@@ -380,8 +359,6 @@ Always register the receiver in the manifest:
 The SDK will broadcast the venue and POI location information retrieved anytime a beacon enter event is processed along with the information for the beacon that triggered the event.  Below is a sample implementation of this receiver.
 
 ```
-#!java
-
 public class LocationInformationReceiver extends BroadcastReceiver {
 
     @Override
@@ -417,8 +394,6 @@ public class LocationInformationReceiver extends BroadcastReceiver {
 Always remember to register the receiver in the manifest:
 
 ```
-#!xml
-
         <receiver
             android:name=".LocationInformationReceiver"
             android:exported="false">
