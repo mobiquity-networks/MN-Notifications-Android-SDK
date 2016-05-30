@@ -14,37 +14,18 @@ Currently this project has hardcoded credentials for both the AAR file on S3, an
 # Android Mobiquity Networks SDK V2 #
 
 ## Release Notes ##
-* **0.0.29** 
-    * V2 Release Candidate
+* **1.2** 
+    * V2 Release
 
 
 ## Setup ##
 This SDK requires use of the Android Studio development environment.
 
-Currently the SDK AAR file is stored in the Amazon S3 cloud.  This requires that we setup a new repository in the project build.gradle file:
-
-```
-...
-allprojects {
-    repositories {
-       maven {
-          url "s3://mobiquity-android/releases"
-          credentials(AwsCredentials) {
-             accessKey "AKIAJTNYS6A62H26OEHQ"
-             secretKey "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"
-          }
-       }
-       ...
-    }
-}
-...
-```
-
-Then, in the the app module build.gradle we need to add this SDK as a dependency:
+In the the app module build.gradle we need to add this SDK as a dependency:
 ```
 dependencies {
     ...
-    compile 'com.mobiquitynetworks:mobiquitynetworkssdk:x.x.x'
+    compile 'com.mobiquitynetworks:mn-notifications:1.2'
     ...
 }
 ```
