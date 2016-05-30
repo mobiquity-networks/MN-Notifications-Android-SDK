@@ -1,16 +1,3 @@
-# Android Mobiquity Networks SDK v2 Sample App #
-
-## Release Notes ##
-* **0.0.1** 
-    * V2 Sample App
-
-
-## Setup ##
-Import project into Android Studio.  Run on a real device (no simulators).
-
-Currently this project has hardcoded credentials for both the AAR file on S3, and API key/secret for Mobiquity servers.  To update the API key/secret simple edit the mobiquity.properties file in the assets directory.  Below you will find the readme information for the SDK set and usage.
-
-
 # Android Mobiquity Networks SDK V2 #
 
 ## Release Notes ##
@@ -455,3 +442,17 @@ role=final/test/dev (defaults to final)
 iconname=<whatever the icon you'd like to use in the notifications is called, defaults to app icon>
 debug=true/false (setting this to true will allow the SDK to log messages, default is false)
 ```
+
+
+# Android Mobiquity Networks SDK v2 Sample App #
+
+## Release Notes ##
+* **1.0** 
+* V2 Sample App that shows a simple integration
+
+
+## Setup ##
+Import project into Android Studio.  Run on a real device (no simulators).
+
+To update the API key/secret simple edit the mobiquity.properties file in the assets directory.  Below you will find the readme information for the SDK set and usage.
+
