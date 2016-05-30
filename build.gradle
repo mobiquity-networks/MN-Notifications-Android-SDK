@@ -14,10 +14,6 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            url 'https://dl.bintray.com/mobiquity/android_v2_sdk_notifications/'
-        }
-
         jcenter()
     }
 }
