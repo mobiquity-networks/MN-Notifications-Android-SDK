@@ -6,7 +6,7 @@
 
 
 ## Setup ##
-This SDK requires use of the Android Studio development environment.
+This SDK requires use of the Android Studio development environment.  It is packaged an AAR and hosted on jcenter so please ensure you have jcenter setup as a repository for your app.  For more information please refer to the Android documentation here: https://developer.android.com/studio/build/index.html
 
 In the the app module build.gradle we need to add this SDK as a dependency:
 ```
