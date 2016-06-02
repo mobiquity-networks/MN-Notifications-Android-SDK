@@ -1,6 +1,8 @@
 # Android Mobiquity Networks SDK V2 #
 
 ## Release Notes ##
+* **1.2.1** 
+    * V2 Re-Release to remove extraneous WIFI permission
 * **1.2** 
     * V2 Release
 
@@ -8,14 +10,18 @@
 ## Setup ##
 This SDK requires use of the Android Studio development environment.  It is packaged an AAR and hosted on jcenter so please ensure you have jcenter setup as a repository for your app.  For more information please refer to the Android documentation here: https://developer.android.com/studio/build/index.html
 
-In the the app module build.gradle we need to add this SDK as a dependency:
+If you have already integrated a previous version of the Mobiquity Networks SDKs, we highly suggest you read through the section titled "Migrating From V1" below.
+
+In the the app module build.gradle we need to add 2 dependencies:
 ```
 dependencies {
     ...
-    compile 'com.mobiquitynetworks:mn-notifications:1.2'
+    compile 'com.mobiquitynetworks:mn-notifications:1.2.1'
+    compile 'com.google.android.gms:play-services-ads:8.4.0'
     ...
 }
 ```
+If your app is already using the full Google Play Services package, then you don't need the Google Play Services Ads dependency.  The SDK will support any version of Google Play Services framework from 7.8.0 and up.
 
 The SDK is now part of your application and ready to be used.
 
@@ -24,6 +30,10 @@ The SDK is now part of your application and ready to be used.
 The easiest integration to the SDK comes from extending the MNApplication class and registering it in your Manifest file as your application class.  This will automatically take care of starting the SDK when the app starts.
 
 ```
+package mobiquitynetworks.com.mobiquitynetworkssampleapp;
+
+import com.mobiquitynetworks.MNApplication;
+
 public class MainApplication extends MNApplication {
 }
 ```
@@ -103,7 +113,87 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
 ```
 
 ## Migrating From V1 ##
-If you have already integrated a previous version of the Mobiquity Networks SDK into your app, you will need to make some modifications.  Most of these modification centre around features such as demographics, custom information, and user tracking.
+If you have already integrated a previous version of the Mobiquity Networks SDK into your app, you will need to make some modifications.  Most of these modification centre around features such as demographics, custom information, and user tracking.  In addition to this you will need to remove some items from your application manifest, as well as some dependencies.
+
+### Dependencies ###
+
+The previous SDK required extra dependencies that aren't required anymore.  These should be removed to ensure the smallest application size possible.  Go ahead and remove the following dependencies:
+* mnsignals-x.x.x.x.jar
+* mnapm-x.x.x.jar
+* mnnotifications-o-x.x.x.x.jar
+
+These are no longer required by the SDK, so if your app is not making use of them, they should also be removed.
+* retrofit-x.x.x.jar
+* guava-x.x.jar
+* gson-x.x.x.jar -> note: gson is used by the SDK, but there is no need to declare it as a dependency here
+
+### Manifest ###
+The previous version of the SDK required you to add some receivers, services and permissions to your manifest.  The new version does not require these, so please go ahead and remove the following from your manifest.  
+
+#### Permissions ####
+The previous SDK required you create custom permissions.  These are no longer used, and can be removed. (Replace "<YOUR APP KEY>" with the app key provided by Mobiquity Networks)
+```
+    <permission 
+        android:name="mobiquitynetworks.permission.SERVICE_<YOUR APP KEY>" 
+        android:label="mobiquity service permission" 
+        android:protectionLevel="signature" />
+    <permission 
+        android:name="mobiquitynetworks.permission.BROADCAST_<YOUR APP KEY>" 
+        android:label="mobiquity broadcast permission" 
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="mobiquitynetworks.permission.SERVICE_<YOUR APP KEY>"/>
+    <uses-permission android:name="mobiquitynetworks.permission.BROADCAST_<YOUR APP KEY>"/>
+```
+Note: The SDK declares all the permissions it requires, except the Google Play Services framework dependency as mentioned above.
+
+#### Receivers ####
+If any of these receivers are defined, please remove them.
+```
+    <receiver 
+        android:name="com.mobiquitynetworks.receivers.BootAndShutdownServiceReceiver"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            <action android:name="android.bluetooth.adapter.action.STATE_CHANGED"/>
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+        </intent-filter>
+    </receiver>
+
+    <receiver
+        android:name="com.mobiquitynetworks.signals.receivers.BeaconToGeoSignalReceiver"
+        android:exported="false">
+        <intent-filter>
+            <action android:name="com.mobiquitynetworks.action.BEACON_DISCOVERY" />
+            <action android:name="com.mobiquitynetworks.action.BEACON_TIMEOUT" />
+        </intent-filter>
+    </receiver>
+
+```
+
+#### Services ####
+If any of these services are defined, please remove them.
+```
+    <service 
+        android:name="com.mobiquitynetworks.services.ProximityService" 
+        android:exported="false" />
+
+    <service 
+        android:name="com.mobiquitynetworks.notifications.services.ClickthroughService" 
+        android:exported="false" />
+
+    <service 
+        android:name="com.mobiquitynetworks.services.MonitoringService" 
+        android:exported="false" />
+```
+
+### mobiquity.properties File ###
+
+The mobiquity.properties file is still where you setup the endpoints, user key and secret, etc.  It has however moved from a folder named 'properties' inside the 'assets' folder, to  the 'assets' folder itself.  For a full list of fields available in the properties file, see the section below titled "Mobiquity Properties File".
+
+### Bluetooth and Geo Event Receivers ###
+
+If you previously were using the SDKs broadcasts to notify you bluetooth being turned off, or of Geo events occurring, you will need to update these receivers to conform with the new SDK.  For more information on utilizing these features, please see the sections titled "Bluetooth Broadcast" and "Venue and POI Broadcast" respectively.
 
 ### User Tracking ###
 In previous versions of the SDK there was a concept of a "user" that included a username and a provider.  This has been removed in favour of tracking users through their AAID (Android Advertising ID).  You are no longer required to retrieve an email address from your users.  The SDK will retrieve the AAID from their phone automatically.
