@@ -1,6 +1,8 @@
 # Android Mobiquity Networks SDK V2 #
 
 ## Release Notes ##
+* **1.2.1.1** 
+    * Contains fixes for issues found in field.
 * **1.2.1** 
     * V2 Re-Release to remove extraneous WIFI permission
 * **1.2** 
@@ -16,7 +18,7 @@ In the the app module build.gradle we need to add 2 dependencies:
 ```
 dependencies {
     ...
-    compile 'com.mobiquitynetworks:mn-notifications:1.2.1'
+    compile 'com.mobiquitynetworks:mn-notifications:1.2.1.1'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     ...
 }
