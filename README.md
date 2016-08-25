@@ -504,8 +504,6 @@ The following are the valid keys/values for the mobiquity.properties file.  All 
 ```
 appkey=<Required App Key from Mobiquity Networks>
 secret=<Required Secret from Mobiquity Networks>
-environment=production/sandbox/qa/dev (defaults to production)
-role=final/test/dev (defaults to final)
 iconname=<whatever the icon you'd like to use in the notifications is called, defaults to app icon>
 debug=true/false (setting this to true will allow the SDK to log messages, default is false)
 ```
