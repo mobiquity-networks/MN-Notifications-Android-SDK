@@ -1,6 +1,8 @@
 # Android Mobiquity Networks SDK V2 #
 
 ## Release Notes ##
+* **1.2.1.2**
+    * Bug Fixes mainly affecting 4.3 devices.
 * **1.2.1.1** 
     * Contains fixes for issues found in field.
 * **1.2.1** 
@@ -14,13 +16,13 @@ This SDK requires use of the Android Studio development environment.  It is pack
 
 If you have already integrated a previous version of the Mobiquity Networks SDKs, we highly suggest you read through the section titled "Migrating From V1" below.
 
-This SDK supports versions of Android from 4.4 (API 19) and up.
+This SDK now supports versions of Android from 4.3 (API 18) and up.
 
 In the the app module build.gradle we need to add 2 dependencies:
 ```
 dependencies {
     ...
-    compile 'com.mobiquitynetworks:mn-notifications:1.2.1.1'
+    compile 'com.mobiquitynetworks:mn-notifications:1.2.1.2'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     ...
 }
