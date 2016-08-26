@@ -14,6 +14,8 @@ This SDK requires use of the Android Studio development environment.  It is pack
 
 If you have already integrated a previous version of the Mobiquity Networks SDKs, we highly suggest you read through the section titled "Migrating From V1" below.
 
+This SDK supports versions of Android from 4.4 (API 19) and up.
+
 In the the app module build.gradle we need to add 2 dependencies:
 ```
 dependencies {
