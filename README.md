@@ -1,16 +1,12 @@
 # Android Mobiquity Networks SDK V2 #
 
 ## Release Notes ##
-* **1.2.1.3**
-    * Further bug fixes for issues found in field.
-* **1.2.1.2**
-    * Bug Fixes mainly affecting 4.3 devices.
-* **1.2.1.1** 
-    * Contains fixes for issues found in field.
-* **1.2.1** 
-    * V2 Re-Release to remove extraneous WIFI permission
-* **1.2** 
-    * V2 Release
+* **1.3.2**
+    * Update to support Android 7 changes.
+    * Update AltBeacon to 2.9.1
+    * Added geofence monitoring and associated campaigns
+    * Notification icon upgrades (ability to set both large and small icons)
+    * Bug fixing
 
 
 ## Setup ##
@@ -24,7 +20,7 @@ In the the app module build.gradle we need to add 2 dependencies:
 ```
 dependencies {
     ...
-    compile 'com.mobiquitynetworks:mn-notifications:1.2.1.3’
+    compile 'com.mobiquitynetworks:mn-notifications:1.3.2’
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     ...
 }
@@ -266,6 +262,40 @@ You can also retrieve your custom tags to update them:
 ```
         List<String> tags = MNManager.getInstance(getApplicationContext()).getTags();
 ```
+
+### Notification Behaviour ###
+
+You can specify the names of the small notification icon and large notification icon you would like displayed in the notifications.  If the small notification icon is omitted from the properties file, the SDK will default to using the applications icon.  This might have undesirable effects depending on the target SDK of your application.
+
+Target SDK <= 20: If your applications target SDK is version 20 or *lower* your application’s icon will not be modified.
+
+Target SDK > 20: If your applications target SDK is version 21 or *higher* your applications icon will be modified by the Android subsystem.  Any coloured areas will become white to create a type of silhouette icon.  Depending on what your icon looks like, this might mean you end up with a white square as an icon.
+
+#### Custom Icons ####
+
+You can specify custom small and large icons that will be used for the notification.  This is done in the mobiquity.properties file through the tags “small-notification-icon” and “large-notification-icon”.  The images must be placed in the applications drawable directory and the names given in the properties file must match the name of the image (without any extension).  While the large icon can be any image you desire, the small icon must adhere to specific requirements or will be modified to suit them as Android sees fit.
+
+##### Small Notification Icon Requirements #####
+
+These requirements come from the Android documentation for notifications found here: https://material.google.com/patterns/notifications.html#notifications-guidelines
+
+More information regarding designing icons for Android an be found here: https://material.google.com/style/icons.html
+
+Notification icons should:
+
+* Be distinct from existing Android notification icons
+* Follow guidelines for system icon styling
+* Be visually simple
+* Be opaque white, using only the alpha channel
+* Have a transparent background
+
+They may have anti-aliased edges.
+
+Notification icons should not:
+
+* Add alpha (dimming or fading)
+* Use color
+* Have opaque backgrounds
 
 
 ### Deeplinking Your App ###
