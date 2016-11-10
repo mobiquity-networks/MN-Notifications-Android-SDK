@@ -544,6 +544,7 @@ iconname=<whatever the icon you'd like to use in the notifications is called, de
 debug=true/false (setting this to true will allow the SDK to log messages, default is false)
 ```
 
+* Note: Remove "<" and ">" as well when inputting your app key and secret from Mobiquity Networks
 
 # Android Mobiquity Networks SDK v2 Sample App #
 
