@@ -1,6 +1,8 @@
 # Android Mobiquity Networks SDK V2 #
 
 ## Release Notes ##
+* **1.3.5**
+    * Fix NPE around determining main activity
 * **1.3.4**
     * Additional work to lower battery usage
     * Changes to geofence monitoring
@@ -26,7 +28,7 @@ In the the app module build.gradle we need to add 2 dependencies:
 ```
 dependencies {
     ...
-    compile 'com.mobiquitynetworks:mn-notifications:1.3.4’
+    compile 'com.mobiquitynetworks:mn-notifications:1.3.5’
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     ...
 }
