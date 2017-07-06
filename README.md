@@ -1,6 +1,8 @@
 # Android Mobiquity Networks SDK V2 #
 
 ## Release Notes ##
+* **1.3.8**
+    * Fix for issue found in field
 * **1.3.7**
     * Error reporting changes
 * **1.3.5**
@@ -30,7 +32,7 @@ In the the app module build.gradle we need to add 2 dependencies:
 ```
 dependencies {
     ...
-    compile 'com.mobiquitynetworks:mn-notifications:1.3.7’
+    compile 'com.mobiquitynetworks:mn-notifications:1.3.8’
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     ...
 }
