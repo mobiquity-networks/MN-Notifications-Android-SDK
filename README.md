@@ -1,6 +1,8 @@
 # Android Mobiquity Networks SDK V2 #
 
 ## Release Notes ##
+* **1.3.9**
+    * Fix for issue identified with beacons not broadcasting battery info
 * **1.3.8**
     * Fix for issue found in field
 * **1.3.7**
