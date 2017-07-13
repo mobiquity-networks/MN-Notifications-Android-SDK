@@ -1,6 +1,11 @@
 # Android Mobiquity Networks SDK V2 #
 
 ## Release Notes ##
+* **2.5**
+    * Improved location accuracy
+    * Increased location data points
+    * Optimized energy management
+    * Various minor bug fixes
 * **1.3.9**
     * Fix for issue identified with beacons not broadcasting battery info
 * **1.3.8**
@@ -34,7 +39,7 @@ In the the app module build.gradle we need to add 2 dependencies:
 ```
 dependencies {
     ...
-    compile 'com.mobiquitynetworks:mn-notifications:1.3.8’
+    compile 'com.mobiquitynetworks:mn-notifications:2.5’
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     ...
 }
