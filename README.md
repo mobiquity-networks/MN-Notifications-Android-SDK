@@ -1,34 +1,6 @@
-# Android Mobiquity Networks SDK V2 #
+![logo](http://www.mobiquitynetworks.com/wp-content/themes/mobiquity/images/logo.jpg)
 
-## Release Notes ##
-* **2.6**
-    * Lower battery usage
-    * Further improvements to location accuracy
-* **2.5**
-    * Improved location accuracy
-    * Increased location data points
-    * Optimized energy management
-    * Various minor bug fixes
-* **1.3.9**
-    * Fix for issue identified with beacons not broadcasting battery info
-* **1.3.8**
-    * Fix for issue found in field
-* **1.3.7**
-    * Error reporting changes
-* **1.3.5**
-    * Fix NPE around determining main activity
-* **1.3.4**
-    * Additional work to lower battery usage
-    * Changes to geofence monitoring
-    * Bug fixing
-* **1.3.3**
-    * Potential battery life issue identified and fixed
-* **1.3.2**
-    * Update to support Android 7 changes.
-    * Update AltBeacon to 2.9.1
-    * Added geofence monitoring and associated campaigns
-    * Notification icon upgrades (ability to set both large and small icons)
-    * Bug fixing
+# Android Mobiquity Networks SDK V2 #
 
 
 ## Setup ##
@@ -39,6 +11,7 @@ If you have already integrated a previous version of the Mobiquity Networks SDKs
 This SDK now supports versions of Android from 4.3 (API 18) and up.
 
 In the the app module build.gradle we need to add 2 dependencies:
+
 ```
 dependencies {
     ...
@@ -158,6 +131,7 @@ The previous version of the SDK required you to add some receivers, services and
 
 #### Permissions ####
 The previous SDK required you create custom permissions.  These are no longer used, and can be removed. (Replace "<YOUR APP KEY>" with the app key provided by Mobiquity Networks)
+
 ```
     <permission 
         android:name="mobiquitynetworks.permission.SERVICE_<YOUR APP KEY>" 
@@ -171,10 +145,12 @@ The previous SDK required you create custom permissions.  These are no longer us
     <uses-permission android:name="mobiquitynetworks.permission.SERVICE_<YOUR APP KEY>"/>
     <uses-permission android:name="mobiquitynetworks.permission.BROADCAST_<YOUR APP KEY>"/>
 ```
+
 Note: The SDK declares all the permissions it requires, except the Google Play Services framework dependency as mentioned above.
 
 #### Receivers ####
 If any of these receivers are defined, please remove them.
+
 ```
     <receiver 
         android:name="com.mobiquitynetworks.receivers.BootAndShutdownServiceReceiver"
@@ -194,11 +170,11 @@ If any of these receivers are defined, please remove them.
             <action android:name="com.mobiquitynetworks.action.BEACON_TIMEOUT" />
         </intent-filter>
     </receiver>
-
 ```
 
 #### Services ####
 If any of these services are defined, please remove them.
+
 ```
     <service 
         android:name="com.mobiquitynetworks.services.ProximityService" 
@@ -568,11 +544,41 @@ debug=true/false (setting this to true will allow the SDK to log messages, defau
 
 * Note: Remove "<" and ">" when inputting your app key, secret, and icon name.
 
-# Android Mobiquity Networks SDK v2 Sample App #
 
 ## Release Notes ##
-* **1.0** 
-* V2 Sample App that shows a simple integration
+* **2.6.1**
+    * Bug Fixes
+* **2.6**
+    * Lower battery usage
+    * Further improvements to location accuracy
+* **2.5**
+    * Improved location accuracy
+    * Increased location data points
+    * Optimized energy management
+    * Various minor bug fixes
+* **1.3.9**
+    * Fix for issue identified with beacons not broadcasting battery info
+* **1.3.8**
+    * Fix for issue found in field
+* **1.3.7**
+    * Error reporting changes
+* **1.3.5**
+    * Fix NPE around determining main activity
+* **1.3.4**
+    * Additional work to lower battery usage
+    * Changes to geofence monitoring
+    * Bug fixing
+* **1.3.3**
+    * Potential battery life issue identified and fixed
+* **1.3.2**
+    * Update to support Android 7 changes.
+    * Update AltBeacon to 2.9.1
+    * Added geofence monitoring and associated campaigns
+    * Notification icon upgrades (ability to set both large and small icons)
+    * Bug fixing
+
+
+# Android Mobiquity Networks SDK v2 Sample App #
 
 
 ## Setup ##
