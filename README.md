@@ -15,7 +15,7 @@ In the the app module build.gradle we need to add 2 dependencies:
 ```
 dependencies {
     ...
-    compile 'com.mobiquitynetworks:mn-notifications:2.6’
+    compile 'com.mobiquitynetworks:mn-notifications:2.6.1’
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     ...
 }
