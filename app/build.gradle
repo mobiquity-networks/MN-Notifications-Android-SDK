@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "mobiquitynetworks.com.mobiquitynetworkssampleapp"
         minSdkVersion 18
-        targetSdkVersion 20
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -26,5 +26,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     compile 'com.google.android.gms:play-services-location:8.4.0'
-    compile 'com.mobiquitynetworks:mn-notifications:2.6.1'
+    compile 'com.mobiquitynetworks:mn-notifications:2.7'
 }

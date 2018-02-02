@@ -15,7 +15,7 @@ In the the app module build.gradle we need to add 2 dependencies:
 ```
 dependencies {
     ...
-    compile 'com.mobiquitynetworks:mn-notifications:2.6.1’
+    compile 'com.mobiquitynetworks:mn-notifications:2.7'
     compile 'com.google.android.gms:play-services-ads:8.4.0'
     ...
 }
@@ -546,6 +546,8 @@ debug=true/false (setting this to true will allow the SDK to log messages, defau
 
 
 ## Release Notes ##
+* **2.7**
+    * Added new event tracking
 * **2.6.1**
     * Bug Fixes
 * **2.6**
